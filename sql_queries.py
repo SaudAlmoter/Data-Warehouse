@@ -61,24 +61,25 @@ staging_songs_table_create = ("""
 songplay_table_create = ("""
     CREATE TABLE IF NOT EXISTS fact_songplay
     (
-    songplay_id          INTEGER IDENTITY(0,1) PRIMARY KEY sortkey,
-    start_time           TIMESTAMP,
-    user_id              INTEGER,
+    songplay_id          NOT NULL INTEGER IDENTITY(0,1) PRIMARY KEY,
+    start_time           NOT NULL TIMESTAMP,
+    user_id              NOT NULL INTEGER,
     level                VARCHAR,
-    song_id              VARCHAR,
-    artist_id            VARCHAR,
+    song_id              NOT NULL VARCHAR,
+    artist_id            NOT NULL VARCHAR,
     session_id           INTEGER,
     location             VARCHAR,
     user_agent           VARCHAR
-    );
+    )
+    SORTKEY (songplay_id);
     """)
 
 user_table_create = ("""
     CREATE TABLE IF NOT EXISTS dim_user
     (
-    user_id INTEGER PRIMARY KEY distkey,
-    first_name      VARCHAR,
-    last_name       VARCHAR,
+    user_id         NOT NULL INTEGER PRIMARY KEY distkey,
+    first_name      NOT NULL VARCHAR,
+    last_name       NOT NULL VARCHAR,
     gender          VARCHAR,
     level           VARCHAR
     )
@@ -88,9 +89,9 @@ user_table_create = ("""
 song_table_create = ("""
     CREATE TABLE IF NOT EXISTS dim_song
     (
-    song_id     VARCHAR PRIMARY KEY,
-    title       VARCHAR,
-    artist_id   VARCHAR distkey,
+    song_id     NOT NULL VARCHAR PRIMARY KEY,
+    title       NOT NULL VARCHAR,
+    artist_id   NOT NULL VARCHAR distkey,
     year        INTEGER,
     duration    FLOAT
     )
@@ -100,8 +101,8 @@ song_table_create = ("""
 artist_table_create =  ("""
     CREATE TABLE IF NOT EXISTS dim_artist
     (
-    artist_id          VARCHAR PRIMARY KEY distkey,
-    name               VARCHAR,
+    artist_id          NOT NULL VARCHAR PRIMARY KEY distkey,
+    name               NOT NULL VARCHAR,
     location           VARCHAR,
     latitude           FLOAT,
     longitude          FLOAT
@@ -112,14 +113,15 @@ artist_table_create =  ("""
 time_table_create = ("""
 CREATE TABLE IF NOT EXISTS dim_time
     (
-    start_time    TIMESTAMP PRIMARY KEY sortkey distkey,
+    start_time    NOT NULL TIMESTAMP PRIMARY KEY distkey,
     hour          INTEGER,
     day           INTEGER,
     week          INTEGER,
     month         INTEGER,
     year          INTEGER,
     weekday       INTEGER
-    );
+    )
+    SORTKEY (start_time);
     """)
 
 
