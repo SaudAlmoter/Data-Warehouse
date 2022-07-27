@@ -64,15 +64,13 @@ start_time, hour, day, week, month, year, weekday
 <b>Final Instructions</b>
 
 1. Import all the necessary libraries
-2. Write the configuration of AWS Cluster, store the important parameter in some other file
-3. Using the bucket, can check whether files log files and song data files are present
-4. Create an IAM User Role, Assign appropriate permissions and create the Redshift Cluster make sure it's in the same region as the S3
-5. Get the Value of Endpoint and Role for put into main configuration file
-6. Authorize Security Access Group to Default TCP/IP Address
-7. Launch database connectivity configuration
-8. Create an IAM user, enable a programmatically access and assign an admin authorization, then put into main configuration file
-9. Go to Terminal write the command "python create_tables.py" and then "etl.py"
-10. Should take around 4-10 minutes in total
-11. Then you go back to jupyter notebook to test everything is working fine
-12. I counted all the records in my tables
-13. Now can delete the cluster, roles and assigned permission# 
+2. Create an IAM User Role, Assign appropriate permissions and create the Redshift Cluster make sure it's in the same region as the S3 "us-west-2"
+3. Get the Value of Endpoint and Role for put into main configuration file
+4. Authorize Security Access Group to Default TCP/IP Address
+5. Launch database connectivity configuration
+6. Create an IAM user, enable a programmatically access and assign an admin authorization, then put into main configuration file
+7. Write the SQL queries in the 'sql_queries.py' file 
+8. Go to Terminal write the command "python create_tables.py" and then "etl.py"
+9. Should take around 4-10 minutes in total
+10. Then you go back to jupyter notebook to test everything is working fine
+11.  Now can delete the cluster, roles and assigned permission# 
