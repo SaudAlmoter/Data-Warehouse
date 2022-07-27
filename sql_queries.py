@@ -146,7 +146,7 @@ staging_songs_copy = ("""
 
 songplay_table_insert = ("""
     INSERT INTO fact_songplay(start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
-    SELECT DISTINCT to_timestamp(to_char(se.ts, '9999-99-99 99:99:99'),'YYYY-MM-DD HH24:MI:SS'),
+    SELECT to_timestamp(to_char(se.ts, '9999-99-99 99:99:99'),'YYYY-MM-DD HH24:MI:SS'),
             se.userId as user_id,
             se.level as level,
             ss.song_id as song_id,
@@ -155,6 +155,7 @@ songplay_table_insert = ("""
             se.location as location,
             se.userAgent as user_agent
     FROM staging_events se
+    WHERE page = 'NextSong'
     JOIN staging_songs ss ON se.song = ss.title AND se.artist = ss.artist_name;
     """)
 
@@ -166,7 +167,7 @@ user_table_insert = ("""
             gender as gender,
             level as level
     FROM staging_events
-    where userId IS NOT NULL;
+    where userId IS NOT NULL AND page = 'NextSong';
     """)
 
 song_table_insert = ("""

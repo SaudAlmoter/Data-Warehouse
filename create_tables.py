@@ -4,12 +4,29 @@ from sql_queries import create_table_queries, drop_table_queries
 
 
 def drop_tables(cur, conn):
+
+    """
+
+    This method will drop all tables 
+    we will call it before the creation of tables.
+    Then it will commit after each drop table.
+
+    ** I took the sql statement from the sql_queries.py file **
+    """
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def create_tables(cur, conn):
+
+    """
+    This method will create all tables
+    we wil call it after the execution of the drop_tables method.
+    Then it will commit after each drop table.
+
+    ** I took the sql statement from the sql_queries.py file **
+    """
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()
