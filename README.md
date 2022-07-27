@@ -75,5 +75,4 @@ start_time, hour, day, week, month, year, weekday
 10. Should take around 4-10 minutes in total
 11. Then you go back to jupyter notebook to test everything is working fine
 12. I counted all the records in my tables
-13. Now can delete the cluster, roles and assigned permission# Data-Warehouse
-# Data-Warehouse
+13. Now can delete the cluster, roles and assigned permission# 
